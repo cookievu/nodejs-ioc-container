@@ -11,6 +11,7 @@
     "chalk": "^3.0.0",
     "dotenv": "^8.2.0",
     "glob": "^7.1.6",
-    "handlebars": "^4.5.1"
+    "handlebars": "^4.5.1",
+    "route-parser": "^0.0.5"
   }
 }

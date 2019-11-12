@@ -15,7 +15,8 @@ class Container {
     this.services = {} // store all services for this application
 
     this.aliases = {
-      '@core': 'core'
+      '@core': 'core',
+      '@core/Http': 'core/Http'
     }
 
     this.agnoreAliases = [
@@ -75,7 +76,7 @@ class Container {
   addAlias(alias, path) {
     return new Promise(async (resolve, reject) => {
       const aliasPath = this.getPath(path)
-      glob(aliasPath + "/**/*.js", {}, (err, files) => {
+      glob(aliasPath + "/**/*.js", {matchBase: true}, (err, files) => {
         if (err) {
           return reject(err)
         }
@@ -191,7 +192,6 @@ class Container {
   async withAliases() {
     let aliases = require(this.getPath('start/app')).aliases
     this.aliases = {...this.aliases, ...aliases}
-
     for (const key in this.aliases) {
       await this.addAlias(key, this.aliases[key])
     }

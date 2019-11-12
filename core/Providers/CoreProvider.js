@@ -8,9 +8,11 @@ class CoreProvider extends ServiceProvider {
     const View = use('View')
     View.defineGlobal()
 
+    const Route = use('Route')
+    Route.loadRoutes()
 
     const Http = use('Http')
-    Http.createServer()
+    Http.createServer(Route)
   }
 
   register() {

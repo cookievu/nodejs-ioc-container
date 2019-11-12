@@ -19,7 +19,7 @@ class Helper {
   }
 
   getPath(...args) {
-    return this.root + args.join('/')
+    return this.root + '/' + args.join('/')
   }
 
 }
