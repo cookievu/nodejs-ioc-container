@@ -192,7 +192,7 @@ class Container {
   }
 
   /**
-   *  Start server
+   *  Start application
    *
    * @returns {this}
    */

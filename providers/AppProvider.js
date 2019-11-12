@@ -2,6 +2,19 @@
 
 const ServiceProvider = use('@core/ServiceProvider')
 
+
+class ExampleService {
+
+  constructor(config) {
+    this.config = config
+  }
+
+  getName() {
+    return 'ExampleService'
+  }
+}
+
+
 class AppProvider extends ServiceProvider {
 
   boot() {
@@ -10,6 +23,9 @@ class AppProvider extends ServiceProvider {
 
   register() {
     console.log('AppProvider Register')
+    this.app.register('Example', (app) => {
+      return new ExampleService(app.Config.get('name'))
+    })
   }
 
 }
