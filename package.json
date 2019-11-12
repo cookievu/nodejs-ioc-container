@@ -1,0 +1,13 @@
+{
+  "name": "eco",
+  "version": "1.0.0",
+  "main": "server.js",
+  "author": "vu",
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon"
+  },
+  "dependencies": {
+    "glob": "^7.1.6"
+  }
+}
