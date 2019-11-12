@@ -1,7 +1,7 @@
 'use strick'
 
 const providers = [
-  'AppProvider' 
+  __dirname + '/../providers/AppProvider' 
 ]
 
 const aliases = {

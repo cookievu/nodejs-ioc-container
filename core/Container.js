@@ -20,7 +20,14 @@ class Container {
 
     this.agnoreAliases = [
       'core/Config',
-      'core/Container'
+      'core/Container',
+      'core/Env',
+      'core/Http',
+      'core/Providers/CoreProvider'
+    ]
+
+    this.providers = [
+      this.root + '/core/Providers/CoreProvider'
     ]
 
     this.defineGlobal()
@@ -161,10 +168,11 @@ class Container {
    */
   withProviders() {
     const providers = require(this.getPath('start', 'app')).providers
+    this.providers = [...this.providers, ...providers]
     // Register Service
     const serviceProviders = []
-    providers.map(provider => {
-      const ClassProvider = require(this.getPath('providers', provider))
+    this.providers.map(provider => {
+      const ClassProvider = require(provider)
       const registerProvider = new ClassProvider(this)
       serviceProviders.push(registerProvider)
       registerProvider.register()
