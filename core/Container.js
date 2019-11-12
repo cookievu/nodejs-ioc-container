@@ -180,16 +180,15 @@ class Container {
    * Init all aliases
    * @returns {Promise<this>}
    */
-  withAliases() {
-    return new Promise(async (resolve) => {
-      let aliases = require(this.getPath('start/app')).aliases
-      this.aliases = {...this.aliases, ...aliases}
+  async withAliases() {
+    let aliases = require(this.getPath('start/app')).aliases
+    this.aliases = {...this.aliases, ...aliases}
 
-      for (const key in this.aliases) {
-        await this.addAlias(key, this.aliases[key])
-      }
-      resolve(this)
-    })
+    for (const key in this.aliases) {
+      await this.addAlias(key, this.aliases[key])
+    }
+
+    return this
   }
 
   /**
